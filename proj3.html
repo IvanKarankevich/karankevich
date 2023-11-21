@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погода в городе</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #searchInput {
+            width: 300px;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        #searchButton{
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <center>   
+            <a href = "main.html">Main</a> |
+            <a href = "proj1.html">project1</a> |
+            <a href = "proj2.html">project2</a> |
+            <a href = "proj3.html">project3</a> |
+    <h1>Погода в городе</h1>
+
+    <label for="cityInput">Введите город: </label>
+    <input type="text" id="cityInput" placeholder="Например, Москва">
+    <button onclick="getWeather()">Получить погоду</button>
+
+    <div id="weatherInfo"></div>
+
+    <script>
+        function getWeather() {
+            var cityInput = document.getElementById("cityInput");
+            var weatherInfo = document.getElementById("weatherInfo");
+
+          
+            if (cityInput.value.trim() === "") {
+                alert("Пожалуйста, введите название города.");
+                return;
+            }
+
+            
+            var apiKey = "bd5e378503939ddaee76f12ad7a97608";
+
+            
+            var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}`;
+
+            
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    
+                    displayWeather(data);
+                })
+                .catch(error => {
+                    console.error("Произошла ошибка при получении данных:", error);
+                    alert("Произошла ошибка при получении данных. Попробуйте позже.");
+                });
+        }
+
+        function displayWeather(data) {
+            var weatherInfo = document.getElementById("weatherInfo");
+
+            
+            var weatherHTML = `
+                <p>Город: ${data.name}</p>
+                <p>Температура: ${Math.round(data.main.temp - 273.15)}°C</p>
+                <p>Описание: ${data.weather[0].description}</p>
+            `;
+
+            weatherInfo.innerHTML = weatherHTML;
+        }
+    </script>
+</body>
+</html>

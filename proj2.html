@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск в Google</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #searchInput {
+            width: 300px;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        #searchButton {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<center>   
+            <a href = "main.html">Main</a> |
+            <a href = "proj1.html">project1</a> |
+            <a href = "proj2.html">project2</a> |
+            <a href = "proj3.html">project3</a> |
+
+    <h1>Поиск в Google</h1>
+    <form id="f" action="https://www.google.com/search" method="GET">
+        <label for="searchInput">Введите запрос:</label>
+        <input type="text" id="searchInput" value="Smile face" name="q" required>
+        <input type="submit" id="searchButton" value="Поиск">
+    </form>
+</body>
+</html>

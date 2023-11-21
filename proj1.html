@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цитаты</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+
+        #quoteContainer {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #quoteText {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        #author {
+            font-style: italic;
+        }
+
+        #addQuoteForm {
+            max-width: 400px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+
+
+    <center>   
+            <a href = "main.html">Main</a> |
+            <a href = "proj1.html">project1</a> |
+            <a href = "proj2.html">project2</a> |
+            <a href = "proj3.html">project3</a> |
+    <div id="quoteContainer">
+        <h1>Интересные Цитаты</h1>
+        <div id="quoteText">"Живи и ошибайся. В этом жизнь."</div>
+        <div id="author">— Ричард Олдингтон</div>
+    </div>
+
+    <div id="addQuoteForm">
+        <h2>Добавить свою цитату</h2>
+        <form onsubmit="addQuote(event)">
+            <label for="quote">Цитата:</label>
+            <textarea id="quote" required></textarea>
+            <label for="authorInput"><br>
+        Автор:</label>
+            <input type="text" id="authorInput" required>
+            <button type="submit">Добавить цитату</button>
+        </form>
+    </div>
+
+    
+
+
+    <script>
+        function addQuote(event) {
+            event.preventDefault();
+
+            var newQuote = document.getElementById('quote').value;
+            var newAuthor = document.getElementById('authorInput').value;
+
+            
+            if (newQuote.trim() === '' || newAuthor.trim() === '') {
+                alert('Пожалуйста, заполните оба поля.');
+                return;
+            }
+
+            
+            var quoteContainer = document.getElementById('quoteContainer');
+            var quoteText = document.getElementById('quoteText');
+            var authorText = document.getElementById('author');
+
+            quoteText.textContent = `"${newQuote}"`;
+            authorText.textContent = `— ${newAuthor}`;
+
+            
+            document.getElementById('quote').value = '';
+            document.getElementById('authorInput').value = '';
+        }
+ </script>
+</body>
+</html>
